@@ -10,3 +10,15 @@ C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater\Updater\Upda
 C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater\Updater\Updater\obj\Debug\Updater.exe
 C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater\Updater\Updater\obj\Debug\Updater.xml
 C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater\Updater\Updater\obj\Debug\Updater.pdb
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\bin\Debug\Updater.exe.config
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\bin\Debug\Updater.exe
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\bin\Debug\Updater.pdb
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\bin\Debug\Updater.xml
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.vbprojAssemblyReference.cache
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.Main.resources
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.Resources.resources
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.vbproj.GenerateResource.cache
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.vbproj.CoreCompileInputs.cache
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.exe
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.xml
+C:\Users\aymer\Desktop\Manager Network Detector\File System\Updater - Codes Sources\Updater\Updater\obj\Debug\Updater.pdb

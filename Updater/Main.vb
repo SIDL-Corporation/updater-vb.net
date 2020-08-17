@@ -1,5 +1,4 @@
-﻿Imports System
-Imports System.Net
+﻿Imports System.Net
 Imports System.IO.FileStream
 Imports System.IO.StreamReader
 Imports System.IO.TextReader
@@ -12,26 +11,23 @@ Imports System.Security
 Imports System.IO
 
 Public Class Main
-    Dim VersionActuelle As String = Application.ProductVersion
+    ' répertoire de base
+    Private Repertoire As String = "C:\nom de l'éditeur\nom du logiciel\"
+    Private VersionActuelle As String = My.Computer.FileSystem.ReadAllText(Repertoire & "VERSION\version.md") ' Version actuelle de ce logiciel
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Création des répertoire du logiciel.
-        If System.IO.Directory.Exists("Créer un lien répertoire") = False Then
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
-            System.IO.Directory.Exists("Créer un lien répertoire")
-            System.IO.Directory.CreateDirectory("Créer un lien répertoire")
+        If System.IO.Directory.Exists(Repertoire) = False Then
+            ' on crée le répertoire de base ainsi que les sous-répertoires 
+            System.IO.Directory.CreateDirectory(Repertoire)
+            System.IO.Directory.CreateDirectory(Repertoire & "UPDATE\")
+            System.IO.Directory.CreateDirectory(Repertoire & "LOG\")
+            System.IO.Directory.CreateDirectory(Repertoire & "VERSION\")
+            System.IO.Directory.CreateDirectory(Repertoire & "DATA\")
+            System.IO.Directory.CreateDirectory(Repertoire & "USERDATA\")
+            System.IO.Directory.CreateDirectory(Repertoire & "LOG\MARKDOWN_UPDATE\")
+            System.IO.Directory.CreateDirectory(Repertoire & "UPDATE\SOFTWARE\")
         End If
+
         ' Elements masqué lors de l'affichage de "UpdateDialog".
         GB_DOWNLOAD.Visible = False ' GroupBox de "Logiciel à jour".
         GB_INSTALL.Visible = False ' GroupBox de "Mise à jour disponible".
@@ -46,10 +42,10 @@ Public Class Main
     End Sub
 
     Sub CheckUpdates() ' Fonction CheckUpdate qui sera appelé au lancement du logiciel
-        If My.Computer.FileSystem.FileExists("Lien répertoire ou le fichier .md seras") Then
-            My.Computer.FileSystem.DeleteFile("Lien répertoire ou le fichier .md seras")
+        If My.Computer.FileSystem.FileExists(Repertoire & "VERSION\version.md") Then
+            My.Computer.FileSystem.DeleteFile(Repertoire & "VERSION\version.md")
             Dim Client As WebClient = New WebClient
-            Client.DownloadFileAsync(New Uri("URL du fichier .md"), "Lien répertoire ou le fichier .md seras")
+            Client.DownloadFileAsync(New Uri("URL du fichier .md"), Repertoire & "VERSION\version.md")
             MsgBox("Toutes nos excuses 😥" & vbNewLine & "Le fichier n'existe pas dans la base de données du logiciel" & vbNewLine & "Nous allons télécharger le fichier.", MsgBoxStyle.Exclamation, "Fichier introuvable")
         Else  'Sinon, 
             Dim Client As WebClient = New WebClient
@@ -58,14 +54,14 @@ Public Class Main
         End If
 
         Dim MAJ As New WebClient ' 
-        Dim DernireVersion As String = My.Computer.FileSystem.ReadAllText("Lien répertoire ou le fichier .md seras")
+        Dim DernireVersion As String = My.Computer.FileSystem.ReadAllText(Repertoire & "VERSION\version.md")
         Label3.Text = "Version actuelle : " & Application.ProductVersion & vbNewLine & "Nouvelle version : " & DernireVersion
         If VersionActuelle = DernireVersion Then
             MsgBox("Le logiciel est à jour" & vbNewLine & "Version disponible : " & DernireVersion, MsgBoxStyle.Information, "UPDATE")
         Else 'sinon
             MsgBox("Le logiciel n'est pas à jour" & vbNewLine & "La dernière version est : " & DernireVersion, vbOKOnly + MsgBoxStyle.Critical, "Erreur")
             GB_DOWNLOAD.Visible = True
-            My.Computer.FileSystem.DeleteFile("Lien répertoire ou le fichier .md serasd")
+            My.Computer.FileSystem.DeleteFile(Repertoire & "VERSION\version.md")
             GB_INSTALL.Visible = False
         End If
     End Sub
@@ -77,7 +73,7 @@ Public Class Main
 
             AddHandler Client.DownloadFileCompleted, AddressOf client_DownloadCompleted
 
-            Client.DownloadFileAsync(New Uri("URL sources de votre logiciel (.exe)"), "lien répertoire ou votre update (.exe) se trouve")
+            Client.DownloadFileAsync(New Uri("URL sources de votre logiciel (.exe)"), Repertoire & "UPDATE\SOFTWARE\ Nom du logiciel .exe")
             txt_status.Text = "Téléchargement en cours..."
             txt_status.Enabled = False
             Timer1.Start()
@@ -129,7 +125,7 @@ Public Class Main
     End Sub
 
     Private Sub CB_INSTALL_CheckedChanged(sender As Object, e As EventArgs) Handles CB_INSTALL.CheckedChanged
-        Process.Start("lien répertoire ou votre update (.exe) se trouve")
+        Process.Start(Repertoire & "UPDATE\SOFTWARE\ Nom du logiciel .exe")
         Application.Exit()
     End Sub
 
